@@ -15,20 +15,20 @@ GLC (glog cleaner) is a log clear for glog written in Go. This library support f
 
 ## Installation
 
-```sh
+```go
 go get github.com/xuri/glc
 ```
 
 ## Usage
 
-
+Here is a example usage that will do check every hour and clean the log files that creation time older than 30 minutes.
 
 ```go
 glc.NewGLC(glc.InitOption{
 	Path:     path,
 	Prefix:   `glc`,
-	Interval: time.Duration(time.Second),
-	Reserve:  time.Duration(time.Minute * 10),
+	Interval: time.Duration(time.Hours),
+	Reserve:  time.Duration(time.Minute * 30),
 })
 ```
 
