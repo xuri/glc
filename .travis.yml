@@ -1,0 +1,16 @@
+language: go
+
+sudo: required
+
+before_install:
+  - go get github.com/golang/glog
+
+go:
+  - 1.9.x
+
+script:
+  - go vet ./...
+  - go test -v -coverprofile=coverage.txt -covermode=atomic
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
