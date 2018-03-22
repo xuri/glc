@@ -36,14 +36,6 @@ glc.NewGLC(glc.InitOption{
 
 Contributions are welcome! Open a pull request to fix a bug, or open an issue to discuss a new feature or change.
 
-## Todo
-
-- Handle 404 error page
-- Filter the tubes by name in the overview
-- Logout support when Basic Auth has been enabled
-- Custom job content hightlight display theme support
-- Cookies control, each user can add its own personal Beanstalk server
-
 ## Licenses
 
 This program is under the terms of the MIT License. See [LICENSE](https://github.com/xuri/glc/blob/master/LICENSE) for the full license text.
