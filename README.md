@@ -1,4 +1,4 @@
-![Cleaner for glog](./glc.png "Cleaner for glog")
+![GLC (glog cleaner)](./glc.png "GLC (glog cleaner)")
 
 # GLC (glog cleaner)
 
