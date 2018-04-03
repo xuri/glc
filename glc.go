@@ -96,7 +96,7 @@ func (c *GLC) check(files []os.FileInfo) {
 // drop check the log file creation time and delete the file if the conditions
 // are met.
 func (c *GLC) drop(f os.FileInfo) {
-	if time.Now().Sub(f.ModTime()) > c.reserve {
+	if time.Since(f.ModTime()) > c.reserve {
 		err := os.Remove(c.path + f.Name())
 		if err != nil {
 			glog.Errorln(err)
