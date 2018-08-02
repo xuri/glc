@@ -27,7 +27,7 @@ Here is a example usage that will do check every hour and clean the log files th
 glc.NewGLC(glc.InitOption{
 	Path:     path,
 	Prefix:   `glc`,
-	Interval: time.Duration(time.Hours),
+	Interval: time.Duration(time.Hour),
 	Reserve:  time.Duration(time.Minute * 30),
 })
 ```
