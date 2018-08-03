@@ -27,7 +27,7 @@ go get github.com/xuri/glc
 glc.NewGLC(glc.InitOption{
 	Path:     path,
 	Prefix:   `glc`,
-	Interval: time.Duration(time.Hours),
+	Interval: time.Duration(time.Hour),
 	Reserve:  time.Duration(time.Minute * 30),
 })
 ```
