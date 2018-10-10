@@ -43,3 +43,18 @@ func TestGLC(t *testing.T) {
 		time.Sleep(time.Second * 5)
 	}
 }
+
+func TestBadPath(t *testing.T) {
+	path := []string{"", "/usr/bin/nohup"}
+	for _, p := range path {
+		go func(p string) {
+			NewGLC(InitOption{
+				Path:     p,
+				Prefix:   `glc`,
+				Interval: time.Duration(time.Second),
+				Reserve:  time.Duration(time.Second * 3),
+			})
+		}(p)
+	}
+	time.Sleep(time.Second * 5)
+}
