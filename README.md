@@ -2,7 +2,7 @@
 
 # GLC (glog cleaner)
 
-[![Build Status](https://travis-ci.org/xuri/glc.svg?branch=master)](https://travis-ci.org/xuri/glc)
+[![Build Status](https://travis-ci.com/xuri/glc.svg?branch=master)](https://travis-ci.com/xuri/glc)
 [![Code Coverage](https://codecov.io/gh/xuri/glc/branch/master/graph/badge.svg)](https://codecov.io/gh/xuri/glc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/xuri/glc)](https://goreportcard.com/report/github.com/xuri/glc)
 [![GoDoc](https://godoc.org/github.com/xuri/glc?status.svg)](https://godoc.org/github.com/xuri/glc)
