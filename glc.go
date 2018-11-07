@@ -64,6 +64,9 @@ func (c *GLC) createGZ(src, dest string) error {
 	sfb := bufio.NewReader(sf)
 
 	df, err := os.OpenFile(filepath.Join(c.path, dest), os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+	if err != nil{
+		return err
+	}
 	defer df.Close()
 
 	gw := gzip.NewWriter(df)
