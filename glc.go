@@ -7,6 +7,9 @@ import (
 	"time"
 
 	"github.com/golang/glog"
+	"path/filepath"
+	"bufio"
+	"compress/gzip"
 )
 
 // GLC define the glog cleaner options:
@@ -50,6 +53,32 @@ func NewGLC(option InitOption) *GLC {
 	return c
 }
 
+// Create gz files
+func (c *GLC) createGZ(src, dest string) error {
+	sf, err := os.Open(filepath.Join(c.path, src))
+	if err != nil {
+		return err
+	}
+	defer sf.Close()
+
+	sfb := bufio.NewReader(sf)
+
+	df, err := os.OpenFile(filepath.Join(c.path, dest), os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+	defer df.Close()
+
+	gw := gzip.NewWriter(df)
+	defer gw.Close()
+
+	gwb := bufio.NewWriter(gw)
+	defer gwb.Flush()
+
+	if _, err = gwb.ReadFrom(sfb); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // clean provides function to check path exists by given log files path.
 func (c *GLC) clean() {
 	exists, err := c.exists(c.path)
@@ -81,14 +110,65 @@ func (c *GLC) exists(path string) (bool, error) {
 	return true, err
 }
 
+// Get read symlink files
+func (c *GLC) getRealFile(files []os.FileInfo) (str string) {
+	for _, f := range files {
+		// Skip not symlink file
+		if f.Mode()&os.ModeSymlink == 0 {
+			continue
+		}
+
+		// Get real file name
+		if s, e := filepath.EvalSymlinks(filepath.Join(c.path, f.Name())); e != nil {
+			continue
+		} else {
+			str += filepath.Base(s)
+		}
+
+	}
+
+	return
+}
+
 // check provides function to check log files name whether the deletion
 // condition is satisfied.
 func (c *GLC) check(files []os.FileInfo) {
+	rf := c.getRealFile(files)
+
 	for _, f := range files {
-		prefix := strings.HasPrefix(f.Name(), c.prefix)
-		str := strings.Split(f.Name(), `.`)
-		if prefix && len(str) == 7 && str[3] == `log` {
-			c.drop(f)
+		// Skip directory
+		if f.IsDir() {
+			continue
+		}
+
+		// Skip not has prefix string
+		if ! strings.HasPrefix(f.Name(), c.prefix) {
+			continue
+		}
+
+		// Skip symlink files
+		if f.Mode()&os.ModeSymlink != 0 {
+			continue
+		}
+
+		// Skip symlink real files
+		if strings.Contains(rf, f.Name()) {
+			continue
+		}
+
+		// Delete old files
+		if time.Since(f.ModTime()) > c.reserve {
+			if err := os.Remove(filepath.Join(c.path, f.Name())); err != nil {
+				glog.Error(err)
+			}
+		} else if time.Since(f.ModTime()) > time.Duration(time.Minute*3) && (! strings.HasSuffix(f.Name(), ".gz")) {
+			if err := c.createGZ(f.Name(), f.Name()+".gz"); err != nil { // Compress log files
+				glog.Error(err)
+			} else {
+				if err := os.Remove(filepath.Join(c.path, f.Name())); err != nil {
+					glog.Error(err)
+				}
+			}
 		}
 	}
 }
