@@ -8,6 +8,7 @@
 [![GoDoc](https://godoc.org/github.com/xuri/glc?status.svg)](https://godoc.org/github.com/xuri/glc)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/xuri/glc/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/xuri)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxuri%2Fglc.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxuri%2Fglc?ref=badge_shield)
 
 ## Overview
 
@@ -39,3 +40,6 @@ Contributions are welcome! Open a pull request to fix a bug, or open an issue to
 ## Licenses
 
 This program is under the terms of the MIT License. See [LICENSE](https://github.com/xuri/glc/blob/master/LICENSE) for the full license text.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxuri%2Fglc.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxuri%2Fglc?ref=badge_large)
