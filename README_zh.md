@@ -1,4 +1,4 @@
-![GLC (glog cleaner)](./glc.png "GLC (glog cleaner)")
+<img width="210" src="./glc.png" alt="GLC (glog cleaner)">
 
 # GLC (glog cleaner)
 
