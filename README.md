@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.com/xuri/glc.svg?branch=master)](https://travis-ci.com/xuri/glc)
 [![Code Coverage](https://codecov.io/gh/xuri/glc/branch/master/graph/badge.svg)](https://codecov.io/gh/xuri/glc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/xuri/glc)](https://goreportcard.com/report/github.com/xuri/glc)
-[![GoDoc](https://godoc.org/github.com/xuri/glc?status.svg)](https://godoc.org/github.com/xuri/glc)
+[![go.dev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/xuri/glc)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/xuri/glc/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/xuri)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxuri%2Fglc.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxuri%2Fglc?ref=badge_shield)
